@@ -1,0 +1,22 @@
+<?php
+/**
+* @author Tanveer Mohammad <akhil.tanveer@gmail.com>
+* @package   Aquil\Tanveer
+* @since     1.0 First time this was introduced.
+* @copyright 2020 AquilTanveer
+*/
+$data = $this->getRequest()->getParams();
+$phone = $name = "";
+if(!empty($data)) {
+  if(isset($data['name'])) {
+
+    $name = $data['name'];
+  }if(isset($data['contact'])) {
+
+    $phone = $data['contact'];
+  }
+}
+?>
+<h1>Welcome to My account page</h1>
+<p>Name: <?= $name ?></p>
+<p>contact: <?= $phone ?></p>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+* @author Tanveer Mohammad <akhil.tanveer@gmail.com>
+* @package   Aquil\Tanveer
+* @since     1.0 First time this was introduced.
+* @copyright 2020 AquilTanveer
+*/
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+      <add id="Aquil_Tanveer::customer" title="Custom User Details" translate="title" module="Aquil_Tanveer" sortOrder="20" resource="Aquil_Tanveer::customer"/>
+      <add id="Aquil_Tanveer::customergrid" title="Manage Customers" translate="title" module="Aquil_Tanveer" parent="Aquil_Tanveer::customer" sortOrder="10" resource="Aquil_Tanveer::customer" action="customer/customer/index"/>
+  </menu>
+</config>

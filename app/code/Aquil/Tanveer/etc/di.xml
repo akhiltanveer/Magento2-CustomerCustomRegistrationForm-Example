@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!--
+/**
+* @author Tanveer Mohammad <akhil.tanveer@gmail.com>
+* @package   Aquil\Tanveer
+* @since     1.0 First time this was introduced.
+* @copyright 2020 AquilTanveer
+*/
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+      <arguments>
+          <argument name="collections" xsi:type="array">
+              <item name="customer_grid_data_source" xsi:type="string">Aquil\Tanveer\Model\ResourceModel\Customer\Grid\Collection</item>
+          </argument>
+      </arguments>
+</type>
+
+<type name="Aquil\Tanveer\Model\ResourceModel\Customer\Grid\Collection">
+      <arguments>
+          <argument name="mainTable" xsi:type="string">at_custom_form</argument>
+          <argument name="resourceModel" xsi:type="string">Aquil\Tanveer\Model\ResourceModel\Customer</argument>
+      </arguments>
+  </type>
+
+
+<virtualType name="FormGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+      <arguments>
+          <argument name="collection" xsi:type="object" shared="false">Magento\Cms\Model\ResourceModel\Form\Collection</argument>
+          <argument name="filterPool" xsi:type="object" shared="false">FormbuilderGirdFilterPool</argument>
+      </arguments>
+  </virtualType>
+</config>

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+ /**
+ * @author Tanveer Mohammad <akhil.tanveer@gmail.com>
+ * @package   Aquil\Tanveer
+ * @since     1.0 First time this was introduced.
+ * @copyright 2020 AquilTanveer
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="Aquil_Tanveer" setup_version="0.0.1">
+      <sequence>
+          <module name="Magento_Widget" />
+      </sequence>
+    </module>
+</config>

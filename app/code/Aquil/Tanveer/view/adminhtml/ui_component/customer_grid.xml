@@ -1,0 +1,214 @@
+<?xml version="1.0"?>
+<!--/**
+* @author Tanveer Mohammad <akhil.tanveer@gmail.com>
+* @package   Aquil\Tanveer
+* @since     1.0 First time this was introduced.
+* @copyright 2020 AquilTanveer
+*/ -->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">customer_grid.customer_grid_data_source</item>
+            <item name="deps" xsi:type="string">customer_grid.customer_grid_data_source</item>
+        </item>
+        <item name="buttons" xsi:type="array">
+            <item name="add" xsi:type="array">
+                <item name="name" xsi:type="string">add</item>
+                <item name="label" xsi:type="string" translate="true">Create New Customer</item>
+                <item name="class" xsi:type="string">primary</item>
+                <item name="url" xsi:type="string">*/*/add</item>
+            </item>
+        </item>
+        <item name="spinner" xsi:type="string">customer_grid_columns</item>
+    </argument>
+
+<!-- setting the data source for -->
+    <dataSource name="customer_grid_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument>
+            <argument name="name" xsi:type="string">customer_grid_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+                    <item name="update_url" xsi:type="url" path="mui/index/render"/>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="indexField" xsi:type="string">id</item>
+                    </item>
+                </item>
+            </argument>
+        </argument>
+    </dataSource>
+<!-- filters start -->
+      <listingToolbar name="listing_top">
+		  <settings>
+			 <sticky>true</sticky>
+		  </settings>
+          <bookmark name="bookmarks"/>
+          <columnsControls name="columns_controls"/>
+          <exportButton name="export_button"/>
+
+          <filters name="listing_filters"/>
+
+        <filters name="listing_filters">
+                    <settings>
+                        <templates>
+                            <filters>
+                                <select>
+                                    <param name="template" xsi:type="string">ui/grid/filters/elements/ui-select</param>
+                                    <param name="component" xsi:type="string">Magento_Ui/js/form/element/ui-select</param>
+                                </select>
+                            </filters>
+                        </templates>
+                    </settings>
+                </filters>
+          <paging name="listing_paging">
+              <argument name="data" xsi:type="array">
+                  <item name="config" xsi:type="array">
+                      <item name="storageConfig" xsi:type="array">
+                          <item name="provider" xsi:type="string">customer_grid.customer_grid.listing_top.bookmarks</item>
+                          <item name="namespace" xsi:type="string">current.paging</item>
+                      </item>
+                      <item name="selectProvider" xsi:type="string">customer_grid.customer_grid.customer_grid_columns.ids</item>
+                  </item>
+              </argument>
+          </paging>
+      </listingToolbar>
+<!-- pagination in admin interface -->
+
+<!-- filters start -->
+    <dataSource name="customer_grid_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">FormGridDataProvider</argument>
+            <argument name="name" xsi:type="string">customer_grid_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="update_url" xsi:type="url" path="mui/index/render"/>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="indexField" xsi:type="string">id</item>
+                    </item>
+                </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+    <columns name="customer_grid_columns">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="storageConfig" xsi:type="array">
+                    <item name="provider" xsi:type="string">customer_grid.customer_grid.listing_top.bookmarks</item>
+                    <item name="namespace" xsi:type="string">current</item>
+                </item>
+                <item name="editorConfig" xsi:type="array">
+                    <item name="selectProvider" xsi:type="string">customer_grid.customer_grid.customer_grid_columns.ids</item>
+                    <item name="enabled" xsi:type="boolean">true</item>
+                    <item name="indexField" xsi:type="string">id</item>
+                    <item name="clientConfig" xsi:type="array">
+
+                    </item>
+                </item>
+                <item name="childDefaults" xsi:type="array">
+                    <item name="fieldAction" xsi:type="array">
+                        <item name="provider" xsi:type="string">customer_grid.customer_grid.customer_grid_columns.actions</item>
+                        <item name="target" xsi:type="string">applyAction</item>
+                        <item name="params" xsi:type="array">
+                            <item name="0" xsi:type="string">edit</item>
+                            <item name="1" xsi:type="string">${ $.$data.rowIndex }</item>
+                        </item>
+                    </item>
+                    <item name="controlVisibility" xsi:type="boolean">true</item>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="provider" xsi:type="string">customer_grid.customer_grid.listing_top.bookmarks</item>
+                        <item name="root" xsi:type="string">columns.${ $.index }</item>
+                        <item name="namespace" xsi:type="string">current.${ $.storageConfig.root}</item>
+                    </item>
+                </item>
+            </item>
+        </argument>
+
+        <column name="id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">textRange</item>
+                    <item name="sorting" xsi:type="string">asc</item>
+                    <item name="label" xsi:type="string" translate="true">ID</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                </item>
+            </argument>
+        </column>
+        <column name="createddate" class="Magento\Ui\Component\Listing\Columns\Date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">dateRange</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/date</item>
+                    <item name="dataType" xsi:type="string">date</item>
+                    <item name="label" xsi:type="string" translate="true">Submission Date</item>
+                    <item name="dateFormat" xsi:type="string">Y-MM-dd HH:mm:ss</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                </item>
+            </argument>
+        </column>
+        <column name="name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="sorting" xsi:type="string">asc</item>
+                    <item name="label" xsi:type="string" translate="true">Name</item>
+                    <item name="sortOrder" xsi:type="number">30</item>
+                </item>
+            </argument>
+        </column>
+        <column name="email">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="sorting" xsi:type="string">asc</item>
+                    <item name="label" xsi:type="string" translate="true">Email</item>
+                    <item name="sortOrder" xsi:type="number">40</item>
+                </item>
+            </argument>
+        </column>
+        <column name="contact">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="sorting" xsi:type="string">asc</item>
+                    <item name="label" xsi:type="string" translate="true">Contact</item>
+                    <item name="sortOrder" xsi:type="number">50</item>
+                </item>
+            </argument>
+        </column>
+
+        <column name="address">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="sorting" xsi:type="string">asc</item>
+                    <item name="label" xsi:type="string" translate="true">Address</item>
+                    <item name="sortOrder" xsi:type="number">60</item>
+                </item>
+            </argument>
+        </column>
+        <actionsColumn name="actions" class="Aquil\Tanveer\Ui\Component\Listing\Columns\Customer\Actions">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="draggable" xsi:type="boolean">false</item>
+                    <item name="indexField" xsi:type="string">id</item>
+                    <item name="align" xsi:type="string">left</item>
+                    <item name="label" xsi:type="string" translate="true">Edit</item>
+                    <item name="filterable" xsi:type="boolean">false</item>
+                    <item name="sortable" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="number">120</item>
+                </item>
+            </argument>
+        </actionsColumn>
+
+    </columns>
+</listing>

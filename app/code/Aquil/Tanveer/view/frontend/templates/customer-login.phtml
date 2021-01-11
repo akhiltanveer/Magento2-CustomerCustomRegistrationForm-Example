@@ -1,0 +1,42 @@
+<?php
+/**
+* @author Tanveer Mohammad <akhil.tanveer@gmail.com>
+* @package   Aquil\Tanveer
+* @since     1.0 First time this was introduced.
+* @copyright 2020 AquilTanveer
+*/
+?>
+
+<form class="form contact"
+      action="<?= $block->escapeUrl($block->getFormLoginAction()) ?>"
+      id="contact-form"
+      method="post"
+      data-hasrequired="<?= $block->escapeHtmlAttr(__('* Required Fields')) ?>"
+      data-mage-init='{"validation":{}}'>
+    <fieldset class="fieldset">
+        <legend class="legend"><span><?= $block->escapeHtml(__('Login with Us')) ?></span></legend><br />
+        <div class="field note no-label"><?= $block->escapeHtml(__('Customer Login')) ?></div>
+
+        <div class="field email required">
+            <label class="label" for="email"><span><?= $block->escapeHtml(__('Email')) ?></span></label>
+            <div class="control">
+                <input name="email" id="email" title="<?= $block->escapeHtmlAttr(__('Email')) ?>" value="<?= $block->escapeHtmlAttr($this->helper(\Magento\Contact\Helper\Data::class)->getPostValue('email') ?: $this->helper(\Magento\Contact\Helper\Data::class)->getUserEmail()) ?>" class="input-text" type="email" data-validate="{required:true, 'validate-email':true}"/>
+            </div>
+        </div>
+        <div class="field password required">
+            <label class="label" for="password"><span><?= $block->escapeHtml(__('Password')) ?></span></label>
+            <div class="control">
+                <input name="password" id="password" type="password"  class="input-text" type="text" data-validate="{required:true}"/>
+            </div>
+        </div>
+        <?= $block->getChildHtml('form.additional.info') ?>
+    </fieldset>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <input type="hidden" name="hideit" id="hideit" value="" />
+            <button type="submit" title="<?= $block->escapeHtmlAttr(__('Submit')) ?>" class="action submit primary">
+                <span><?= $block->escapeHtml(__('Submit')) ?></span>
+            </button>
+        </div>
+    </div>
+</form>

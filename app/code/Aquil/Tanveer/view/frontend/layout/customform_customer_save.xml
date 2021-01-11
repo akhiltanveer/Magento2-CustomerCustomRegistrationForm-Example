@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+* @author Tanveer Mohammad <akhil.tanveer@gmail.com>
+* @package   Aquil\Tanveer
+* @since     1.0 First time this was introduced.
+* @copyright 2020 AquilTanveer
+*/
+ -->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Aquil\Tanveer\Block\Customer"
+              name="custom-contact-save"
+               template="Aquil_Tanveer::customer-registration.phtml"
+                cacheable="false"/>
+        </referenceContainer>
+    </body>
+</page>

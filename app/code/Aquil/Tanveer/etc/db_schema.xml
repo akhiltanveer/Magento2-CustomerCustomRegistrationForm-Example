@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!--
+/**
+* @author Tanveer Mohammad <akhil.tanveer@gmail.com>
+* @package   Aquil\Tanveer
+* @since     1.0 First time this was introduced.
+* @copyright 2020 AquilTanveer
+*/
+ -->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="at_custom_form">
+      <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true" comment="ID"/>
+      <column xsi:type="varchar" name="name" nullable="false" length="250" comment="Name"/>
+      <column xsi:type="varchar" name="email" nullable="false" length="150" comment="email"/>
+      <column xsi:type="varchar" name="password" nullable="false" length="200" comment="Password"/>
+      <column xsi:type="varchar" name="gender" nullable="false" length="25" comment="gender"/>
+      <column xsi:type="varchar" name="address" nullable="false" length="150" comment="address"/>
+      <column xsi:type="varchar" name="contact" nullable="false" length="50" comment="contact number"/>
+      <column xsi:type="varchar" name="profile_image" nullable="false" length="500" comment="profile image"/>
+      
+      <column xsi:type="timestamp" name="createddate" nullable="false" default="CURRENT_TIMESTAMP" on_update="false" comment="Created Datetime"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+      </constraint>
+    </table>
+</schema>

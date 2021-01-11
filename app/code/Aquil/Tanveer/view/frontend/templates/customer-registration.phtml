@@ -1,0 +1,108 @@
+<?php
+/**
+* @author Tanveer Mohammad <akhil.tanveer@gmail.com>
+* @package   Aquil\Tanveer
+* @since     1.0 First time this was introduced.
+* @copyright 2020 AquilTanveer
+*/
+?>
+
+<form class="form contact"
+      action="<?= $block->escapeUrl($block->getFormRegisterAction()) ?>"
+      id="contact-form"
+      method="post"
+      data-hasrequired="<?= $block->escapeHtmlAttr(__('* Required Fields')) ?>"
+      data-mage-init='{"validation":{}}' enctype="multipart/form-data">
+    <fieldset class="fieldset">
+        <legend class="legend"><span><?= $block->escapeHtml(__('Register with Us')) ?></span></legend><br />
+        <div class="field note no-label"><?= $block->escapeHtml(__('Customer Registration')) ?></div>
+        <div class="field name required">
+            <label class="label" for="name"><span><?= $block->escapeHtml(__('Name')) ?></span></label>
+            <div class="control">
+                <input name="name" id="name" title="<?= $block->escapeHtmlAttr(__('Name')) ?>" value="<?= $block->escapeHtmlAttr($this->helper(\Magento\Contact\Helper\Data::class)->getPostValue('name') ?: $this->helper(\Magento\Contact\Helper\Data::class)->getUserName()) ?>" class="input-text" type="text" data-validate="{required:true}"/>
+            </div>
+        </div>
+        <div class="field email required">
+            <label class="label" for="email"><span><?= $block->escapeHtml(__('Email')) ?></span></label>
+            <div class="control">
+                <input name="email" id="email" title="<?= $block->escapeHtmlAttr(__('Email')) ?>" value="<?= $block->escapeHtmlAttr($this->helper(\Magento\Contact\Helper\Data::class)->getPostValue('email') ?: $this->helper(\Magento\Contact\Helper\Data::class)->getUserEmail()) ?>" class="input-text" type="email" data-validate="{required:true, 'validate-email':true}"/>
+            </div>
+        </div>
+        <div class="field password required">
+            <label class="label" for="password"><span><?= $block->escapeHtml(__('Password')) ?></span></label>
+            <div class="control">
+                <input name="password" id="password" type="password"  class="input-text" type="text" data-validate="{required:true}"/>
+            </div>
+        </div>
+<div class="field gender required">
+  <label class="label" for="gender"><span><?= $block->escapeHtml(__('Please select your gender')) ?></span></label>
+<p></p>
+          <input type="radio" id="male" name="gender" value="male"  data-validate="{required:true}">
+          <label for="male">Male</label><br>
+          <input type="radio" id="female" name="gender" value="female">
+          <label for="female">Female</label><br>
+          <input type="radio" id="other" name="gender" value="other">
+          <label for="other">Other</label>
+</div>
+<div class="field address">
+    <label class="label" for="address"><span><?= $block->escapeHtml(__('Address')) ?></span></label>
+    <div class="control">
+        <input name="address" id="address" class="input-text" type="text" />
+    </div>
+</div>
+<div class="field contact required">
+    <label class="label" for="contact"><span><?= $block->escapeHtml(__('Contact')) ?></span></label>
+    <div class="control">
+        <input name="contact" id="contact" class="input-text" type="text" />
+    </div>
+</div>
+ <div class="field profile_image">
+     <label class="label" for="profile_image"><span><?php /* @escapeNotVerified */ echo __('Profile Image') ?></span></label>
+     <div class="control">
+         <input name="profile_image" id="profile_image" title="<?php /* @escapeNotVerified */ echo __('Profile Image') ?>"   type="file" />
+     </div>
+ </div><!--
+ <div class="field name required">
+           <label class="label" for="name"><span><?php echo __('Employee Profile picture') ?></span></label>
+           <div class="control">
+               <input name="e_profile_picture" id="e_profile_picture" value="" class="input-text" type="file" data-validate="{required:true}"/>
+           </div>
+       </div> -->
+       <!-- <p style="font-size: 15px;">
+           <b>Attachment</b>
+           (Upload any relevant file e.g. screenshot of website error)
+       </p>
+       <p id="file_error" class="message-error error message" style="display:none;">
+           File is too large
+       </p>
+       <p class="file">
+           File must be less than 2MB and in any of these formats: .jpg, .png, .gif, .pdf, .docx
+       </p>
+       <input id="file-btn" accept=".pdf, .png, .jpg, .gif, .docx, .jpeg/*" name="document" type="file" value="">
+
+       <script type="text/javascript" xml="space">
+       require(['jquery'], function ($) {
+           jQuery(document).ready(function($){
+               var uploadField = document.getElementById("file-btn");
+               uploadField.onchange = function() {
+                   if(this.files[0].size > 2048){
+                      $('#file_error').show();
+                      this.value = "";
+                   }else{
+                       $('#file_error').hide();
+                   };
+               };
+           });
+       });
+       </script> -->
+        <?= $block->getChildHtml('form.additional.info') ?>
+    </fieldset>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <input type="hidden" name="hideit" id="hideit" value="" />
+            <button type="submit" title="<?= $block->escapeHtmlAttr(__('Submit')) ?>" class="action submit primary">
+                <span><?= $block->escapeHtml(__('Submit')) ?></span>
+            </button>
+        </div>
+    </div>
+</form>
